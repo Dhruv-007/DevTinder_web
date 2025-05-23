@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
-import UserCard from './Card'
-import { useEditProfileMutation } from './apiSlice'
-import { userFeed } from './store/userSlice'
+import UserCard from '../components/Card'
+import { useEditProfileMutation } from '../apiSlice'
+import { userFeed } from '../store/userSlice'
 
 export const EditProfile = ({user}) => {
   const {handleSubmit, register, form, formState: { errors }} = useForm()
@@ -14,6 +14,7 @@ export const EditProfile = ({user}) => {
   const [age, setIsAge] = React.useState(user.age)
   const [about, setAbout] = React.useState(user.about)
   const [gender, setGender] = React.useState(user.gender)
+  console.log(gender,"gender")
   const [showToast, setShowToast] = React.useState(false);
   const [showMessage, setShowMessage] = React.useState(false);
 
@@ -35,8 +36,8 @@ export const EditProfile = ({user}) => {
         gender: gender,
       }
       const result = await editProfile(payload).unwrap()
-      dispatch(userFeed(result));
-      console.log(result?.message)
+      dispatch(userFeed(result?.profile));
+      console.log(result)
       setShowToast(true)
       setShowMessage(result?.message)
       setTimeout(() => {
@@ -90,17 +91,7 @@ export const EditProfile = ({user}) => {
             className="input input-primary" 
             />
            </div>
-           <div className="form-control">
-              <label className="label">
-                <span className="label-text">Last Name</span>
-                </label>
-            <input type="text" 
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Don John" 
-            className="input input-primary" 
-            />
-           </div>
+
            <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo Url</span>
@@ -112,18 +103,17 @@ export const EditProfile = ({user}) => {
             className="input input-primary" 
             />
            </div>
-
            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Gender</span>
-                </label>
-            <input type="text" 
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            placeholder="Don John" 
-            className="input input-primary" 
-            />
-           </div>
+  <label className="label">
+    <span className="label-text">Gender</span>
+  </label>
+  <select value={gender} onChange={e => setGender(e.target.value)} className="select select-primary">
+    <option disabled={true} value="">Select Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="others">Others</option>
+  </select>
+</div>
 
            <div className="form-control">
               <label className="label">
@@ -136,6 +126,8 @@ export const EditProfile = ({user}) => {
             className="input input-primary" 
             />
            </div>
+
+
 
        
   

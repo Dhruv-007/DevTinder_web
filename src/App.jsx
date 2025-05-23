@@ -4,9 +4,11 @@ import './App.css'
 import { Body } from './Body'
 import { store } from './store/store'
 import { Provider } from 'react-redux'
-import { LoginPage } from './LoginPage'
-import { Feed } from './Feed'
+import { LoginPage } from './Screens/LoginPage'
+import { Feed } from './Screens/Feed'
 import Profile from './Profile'
+import Connections from './Screens/Connections'
+import Requests from './Screens/Requests'
 
 
 
@@ -23,6 +25,8 @@ function App() {
     <Route path='/' element={<Feed/>} />
     <Route path='/login-page' element={<LoginPage/>} />
     <Route path='/profile' element={<Profile/>} />
+    <Route path='/connections' element={<Connections/>} />
+    <Route path='/requests' element={<Requests/>} />
 
 
     </Route>

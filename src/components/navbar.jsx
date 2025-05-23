@@ -22,7 +22,7 @@ import { Link, useNavigate } from 'react-router'
     <div className="navbar bg-base-300 shadow-sm">
   <div className="flex-1">
     <Link to="/">
-    <a className="btn btn-ghost text-xl"> <Heart color='red' /> DevTinder</a>
+    <span className="btn btn-ghost text-xl"> <Heart color='red' /> DevTinder</span>
     </Link>
   </div>
   <div className="flex gap-2 mx-5">
@@ -41,13 +41,14 @@ import { Link, useNavigate } from 'react-router'
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
           <Link to="/profile">
-          <a className="justify-between">
+          <p className="justify-between">
             Profile
-          </a>
+          </p>
           </Link>
         </li>
-        <li><a>Settings</a></li>
-        <li onClick={handleLogout} ><a>Logout</a></li>
+        <li><a><Link to='/connections'>Connection</Link></a></li>
+        <li><a><Link to='/requests'>Request</Link></a></li>
+        <li onClick={handleLogout} ><p>Logout</p></li>
       </ul>
     </div>
   </div>

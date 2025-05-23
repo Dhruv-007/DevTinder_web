@@ -1,5 +1,5 @@
 import React from 'react'
-import { EditProfile } from './EditProfile'
+import { EditProfile } from './Screens/EditProfile'
 import { useSelector } from 'react-redux'
 
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSignUpMutation } from './apiSlice'
+import { useSignUpMutation } from '../apiSlice'
 import { useDispatch } from 'react-redux'
-import { addUser } from './store/userSlice'
+import { addUser } from '../store/userSlice'
 import { useNavigate } from 'react-router'
 
 export const LoginPage = () => {

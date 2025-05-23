@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useGetFeedQuery} from './apiSlice'
+import { useGetFeedQuery} from '../apiSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import { userFeed } from './store/userSlice';
-import UserCard from './Card';
+import { userFeed } from '../store/userSlice';
+import UserCard from '../components/Card';
 
 export const Feed =()=> {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ data
 dispatch(userFeed(data))
  },[])
 
-console.log(user,"User")
     
 
   return (

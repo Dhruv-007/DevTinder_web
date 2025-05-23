@@ -54,7 +54,33 @@ export const apiSlice = createApi({
                 body,
             }
         }
+    }),
+    getConnection:builder.query({
+        query:() =>{
+            return{
+                url: '/user/connections',
+                method: 'GET',
+                credentials: 'include'
+            }
+        }
+    }),
+    getRequest:builder.query({
+        query:() =>{
+            return{
+                url: '/user/request/recieved',
+                method: 'GET',
+                credentials: 'include'  
+            }
+        }
+    }),
+    reviewRequest:builder.mutation({
+        query:({status, requestId}) => ({
+            url: `request/review/${status}/${requestId}`,
+            method: 'POST',
+            credentials: 'include'
+        })
     })
+
   })
 })
 
@@ -63,6 +89,9 @@ export const {
      useLazyGetProfileQuery ,
      useLogoutMutation,
      useGetFeedQuery,
-     useEditProfileMutation
+     useEditProfileMutation,
+     useGetConnectionQuery,
+     useGetRequestQuery,
+     useReviewRequestMutation
 
     } = apiSlice
