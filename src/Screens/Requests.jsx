@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import { useGetRequestQuery, useReviewRequestMutation } from '../apiSlice';
+import { useDispatch } from 'react-redux';
+import { removeRequestFeed, requestFeed } from '../store/requestSlice';
 
 function Requests() {
   const {data} = useGetRequestQuery();
   const [reviewRequest] =  useReviewRequestMutation()
+  const dispatch = useDispatch();
 
-  const acceptRequest = async (requestId) => {
-    const response = await reviewRequest(requestId, "accepted");
-    console.log(response);
-  }
-  // useEffect(() => {
-  //   if (data) {
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      dispatch(removeRequestFeed(data?.data_id))
+     
+    }
+  }, [data]);
 
   return (
     <div className="p-6 max-w-2xl mx-auto space-y-4">

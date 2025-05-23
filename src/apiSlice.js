@@ -79,10 +79,28 @@ export const apiSlice = createApi({
             method: 'POST',
             credentials: 'include'
         })
+    }),
+    sendRequest:builder.mutation({
+        query:({status,requestId}) =>{
+            return{
+                url: `request/send/${status}/${requestId}`,
+                method: 'POST',
+                credentials: 'include',
+            }
+        }
+    }),
+    makeSignUp: builder.mutation({
+        query:(body) =>{
+            return{
+                url: '/signup',
+                method: 'POST',
+                body,
+                credentials: 'include'
+            }
+        }
+     })
     })
-
   })
-})
 
 export const {
      useSignUpMutation, 
@@ -92,6 +110,8 @@ export const {
      useEditProfileMutation,
      useGetConnectionQuery,
      useGetRequestQuery,
-     useReviewRequestMutation
+     useReviewRequestMutation,
+     useSendRequestMutation,
+     useMakeSignUpMutation
 
     } = apiSlice
